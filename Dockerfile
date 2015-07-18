@@ -5,7 +5,7 @@ RUN dnf -y groupinstall \
     && yum clean all
 
 # http://sigkillit.com/2013/02/26/how-to-remotely-access-linux-from-windows/
-ADD Xclients /etc/skel/.Xclients
+COPY Xclients /etc/skel/.Xclients
 
 RUN dnf -y install \
     scap-security-guide \
@@ -18,7 +18,7 @@ RUN useradd foo && \
     echo foo:bar | chpasswd
 
 # Configure supervisord to run session manager and xrdp.
-ADD xrdp.ini /etc/supervisord.d/
+COPY xrdp.ini /etc/supervisord.d/
 
 # Allow all users to connect via RDP.
 RUN sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
