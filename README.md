@@ -26,8 +26,7 @@ On a Linux host with Docker:
     docker run -d -p 3389:3389 jumanjiman/xrdp
 
 Connect to the container as user `foo` with password `bar`
-via an RDP client, such as the [Ericom AccessToGo Chrome App]
-(https://chrome.google.com/webstore/detail/accesstogo-fastest-free-r/pdeelgamlgannhelgoegilelnnojegoh).
+via an RDP client.
 
 
 Build
