@@ -1,10 +1,10 @@
-XFCE in a Fedora 20 Docker container
-====================================
+XFCE in a Fedora Docker container
+=================================
 
 What
 ----
 
-Simple proof of concept to run Fedora 20 desktop in a container.
+Simple proof of concept to run Fedora 22 desktop in a container.
 
 
 Why

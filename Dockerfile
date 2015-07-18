@@ -1,18 +1,18 @@
-FROM fedora:20
+FROM fedora:22
 
-RUN yum -y groupinstall \
+RUN dnf -y groupinstall \
     'Xfce Desktop' \
     && yum clean all
 
 # http://sigkillit.com/2013/02/26/how-to-remotely-access-linux-from-windows/
 ADD Xclients /etc/skel/.Xclients
 
-RUN yum -y install \
+RUN dnf -y install \
     scap-security-guide \
     scap-workbench \
     supervisor \
     xrdp \
-    && yum clean all
+    && dnf clean all
 
 RUN useradd foo && \
     echo foo:bar | chpasswd
