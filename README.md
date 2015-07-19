@@ -23,7 +23,12 @@ Run
 
 On a Linux host with Docker:
 
+    # Vanilla desktop.
+    # This is really meant to be a base image for others.
     docker run -d -p 3389:3389 jumanjiman/xrdp
+
+    # Or desktop with SCAP workbench.
+    docker run -d -p 3389:3389 jumanjiman/scap-workbench
 
 Connect to the container as user `foo` with password `bar`
 via an RDP client.
@@ -32,6 +37,7 @@ via an RDP client.
 Build
 -----
 
-On a Linux host with Docker:
+On a Linux host with Docker 1.6 or higher:
 
-    docker build --rm -t jumanjiman/xrdp .
+    docker build --rm -t jumanjiman/xrdp-fedora -f Dockerfile.xrdp-fedora .
+    docker build --rm -t jumanjiman/xrdp -f Dockerfile.apps .

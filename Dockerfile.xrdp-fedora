@@ -1,12 +1,7 @@
 FROM fedora:22
 
-RUN dnf -y groupinstall \
-    'Xfce Desktop' \
-    && yum clean all
-
-RUN dnf -y install \
-    scap-security-guide \
-    scap-workbench \
+RUN dnf -y groupinstall 'Xfce Desktop' && \
+    dnf -y install \
     supervisor \
     xrdp \
     && dnf clean all
