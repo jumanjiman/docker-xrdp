@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Terminate all services.
+s6-svscanctl -t /etc/s6

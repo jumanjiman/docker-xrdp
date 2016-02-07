@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#s6-setuidgid foo x11vnc -create -nopw
+su -l -c 'x11vnc -forever -create -nopw' foo
