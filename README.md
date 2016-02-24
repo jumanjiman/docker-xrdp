@@ -41,3 +41,5 @@ On a Linux host with Docker 1.6 or higher:
 
     docker build --rm -t jumanjiman/xrdp-fedora -f Dockerfile.xrdp-fedora .
     docker build --rm -t jumanjiman/xrdp -f Dockerfile.apps .
+
+    docker build --rm -t jumanjiman/xrdp:alpine -f alpine/Dockerfile.xrdp alpine/
