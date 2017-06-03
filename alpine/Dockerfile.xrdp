@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 RUN apk add --no-cache \
       lxdm \
@@ -12,12 +12,12 @@ RUN apk add --no-cache \
       xfce4 \
       xinit \
       xorg-server \
+      xrdp \
       xvfb \
     && \
     apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/testing \
       x11vnc \
-      xrdp-git \
-      xrdp-git-xorgxrdp \
+      xorgxrdp \
     && \
     :
 
