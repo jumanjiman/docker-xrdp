@@ -33,6 +33,19 @@ On a Linux host with Docker:
 Connect to the container as user `foo` with password `bar`
 via an RDP client.
 
+On a Windows host with Docker:
+
+    # Vanilla desktop.
+    # This is really meant to be a base image for others.
+    docker run -d -p 4000:3389 jumanjiman/xrdp
+
+    # Or desktop with SCAP workbench.
+    docker run -d -p 4000:3389 jumanjiman/scap-workbench
+
+Connect to the container as user `foo` with password `bar`
+via an RDP client to localhost:4000
+(Note that you may be able to just follow the Linux instructions, but at least some versions of Windows have Remote Assitance / Remote Desktop already listening on port 3389)
+
 
 Build
 -----
