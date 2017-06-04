@@ -1,10 +1,10 @@
-XFCE in a Fedora Docker container
-=================================
+XFCE in a Docker container
+==========================
 
 What
 ----
 
-Simple proof of concept to run Fedora 22 desktop in a container.
+Simple proof of concept to run a Linux desktop in a container.
 
 
 Why
@@ -23,24 +23,32 @@ Run
 
 On a Linux host with Docker:
 
-    # Vanilla desktop.
+    # Alpine desktop.
+    # This is really meant to be a base image for others.
+    docker run -d -p 3389:3389 jumanjiman/xrdp:alpine
+
+    # Fedora desktop.
     # This is really meant to be a base image for others.
     docker run -d -p 3389:3389 jumanjiman/xrdp
 
     # Or desktop with SCAP workbench.
-    docker run -d -p 3389:3389 jumanjiman/scap-workbench
+    docker run -d -p 3389:3389 jumanjiman/xrdp:openscap
 
 Connect to the container as user `foo` with password `bar`
 via an RDP client.
 
 On a Windows host with Docker:
 
-    # Vanilla desktop.
+    # Alpine desktop.
+    # This is really meant to be a base image for others.
+    docker run -d -p 4000:3389 jumanjiman/xrdp:alpine
+
+    # Fedora desktop.
     # This is really meant to be a base image for others.
     docker run -d -p 4000:3389 jumanjiman/xrdp
 
     # Or desktop with SCAP workbench.
-    docker run -d -p 4000:3389 jumanjiman/scap-workbench
+    docker run -d -p 4000:3389 jumanjiman/xrdp:openscap
 
 Connect to the container as user `foo` with password `bar`
 via an RDP client to localhost:4000
@@ -50,9 +58,6 @@ via an RDP client to localhost:4000
 Build
 -----
 
-On a Linux host with Docker 1.6 or higher:
+On a Linux host with Docker and Docker Compose:
 
-    docker build --rm -t jumanjiman/xrdp-fedora -f Dockerfile.xrdp-fedora .
-    docker build --rm -t jumanjiman/xrdp -f Dockerfile.apps .
-
-    docker build --rm -t jumanjiman/xrdp:alpine -f alpine/Dockerfile.xrdp alpine/
+    ci/build

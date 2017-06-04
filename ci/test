@@ -4,4 +4,6 @@ set -e
 . ci/vars
 
 docker-compose up -d alpine
+docker-compose up -d fedora
+docker-compose up -d openscap
 bats ci/*.bats
