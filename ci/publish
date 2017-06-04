@@ -3,6 +3,6 @@ set -e
 
 . ci/vars
 
-docker login -e ${mail} -u ${user} -p ${pass}
+docker login -u ${user} -p ${pass}
 docker-compose push
 docker logout
