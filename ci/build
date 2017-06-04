@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-docker build --rm -t jumanjiman/xrdp -f alpine/Dockerfile.xrdp alpine/
+docker build --rm -t jumanjiman/xrdp:alpine -f alpine/Dockerfile alpine/
