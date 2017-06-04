@@ -2,5 +2,5 @@
 set -e
 
 docker login -e ${mail} -u ${user} -p ${pass}
-docker push jumanjiman/xrdp:alpine
+docker-compose push
 docker logout

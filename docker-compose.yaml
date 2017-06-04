@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  alpine:
+    image: jumanjiman/xrdp:alpine
+    build:
+      context: alpine/
+    pids_limit: 300
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
+    ports:
+      - "2389:3389"

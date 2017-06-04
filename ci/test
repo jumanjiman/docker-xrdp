@@ -1,4 +1,5 @@
 #!/bin/sh
 set -e
 
-docker images | grep xrdp
+docker-compose up -d
+bats ci/*.bats
