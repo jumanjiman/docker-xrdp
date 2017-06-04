@@ -1,7 +1,6 @@
 # https://circleci.com/docs/docker
 machine:
   environment:
-    PULL_TAG: ${CIRCLE_USERNAME}_${CIRCLE_BRANCH/\//_}
     BATS_VER: 0.4.0
   services:
     - docker
@@ -17,14 +16,13 @@ dependencies:
     - docker info
     - docker version
     - ss -tulpn
-    - docker build --rm -t jumanjiman/xrdp -f alpine/Dockerfile.xrdp alpine/
-    - docker tag -f jumanjiman/xrdp jumanjiman/xrdp:${PULL_TAG}
+    - ci/build
 
 test:
   pre:
     - docker ps -a
   override:
-    - docker images | grep xrdp
+    - ci/test
 
 # https://circleci.com/docs/configuration#deployment
 # https://circleci.com/docs/environment-variables
@@ -33,6 +31,4 @@ deployment:
     branch: /^(?!master).*$/
     owner: jumanjiman
     commands:
-      - docker login -e ${mail} -u ${user} -p ${pass}
-      - docker push jumanjiman/xrdp:${PULL_TAG}
-      - docker logout
+      - ci/publish

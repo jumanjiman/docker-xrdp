@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+publish_from_pr() {
+  PULL_TAG=${CIRCLE_USERNAME}_${CIRCLE_BRANCH/\//_}
+  docker tag jumanjiman/xrdp jumanjiman/xrdp:${PULL_TAG}
+  docker push jumanjiman/xrdp:${PULL_TAG}
+}
+
+docker login -e ${mail} -u ${user} -p ${pass}
+
+if [ -n "${CIRCLE_USERNAME}" ] && [ -n "${CIRCLE_BRANCH}" ]; then
+  publish_from_pr
+fi
+
+docker logout
