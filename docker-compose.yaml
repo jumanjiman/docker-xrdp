@@ -1,0 +1,66 @@
+version: '2.1'
+
+services:
+  alpine:
+    image: jumanjiman/xrdp:alpine
+    build:
+      context: alpine/
+      args:
+        CI_BUILD_URL: ${CIRCLE_BUILD_URL}
+        BUILD_DATE:   ${BUILD_DATE}
+        VCS_REF:      ${VCS_REF}
+    pids_limit: 300
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
+    ports:
+      - "2389:3389"
+
+
+  alpine_tag:
+    extends: alpine
+    image: jumanjiman/xrdp:${ALPINE_TAG}
+
+  fedora:
+    image: jumanjiman/xrdp:fedora
+    build:
+      context: fedora/
+      args:
+        CI_BUILD_URL: ${CIRCLE_BUILD_URL}
+        BUILD_DATE:   ${BUILD_DATE}
+        VCS_REF:      ${VCS_REF}
+    pids_limit: 300
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
+    ports:
+      - "3389:3389"
+
+  fedora_tag:
+    extends: fedora
+    image: jumanjiman/xrdp:${FEDORA_TAG}
+
+  openscap:
+    image: jumanjiman/xrdp:openscap
+    build:
+      context: fedora/openscap/
+      args:
+        CI_BUILD_URL: ${CIRCLE_BUILD_URL}
+        BUILD_DATE:   ${BUILD_DATE}
+        VCS_REF:      ${VCS_REF}
+    pids_limit: 300
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
+    ports:
+      - "4389:3389"
+
+  openscap_tag:
+    extends: openscap
+    image: jumanjiman/xrdp:${OPENSCAP_TAG}

@@ -1,4 +1,15 @@
 #!/bin/sh
 set -e
 
-docker build --rm -t jumanjiman/xrdp -f alpine/Dockerfile.xrdp alpine/
+
+cat > ci/vars <<-EOF
+export BUILD_DATE=$(date +%Y%m%dT%H%M)
+export VCS_REF=$(git rev-parse --short HEAD)
+export ALPINE_TAG=alpine-\${BUILD_DATE}-git-\${VCS_REF}
+export FEDORA_TAG=fedora-\${BUILD_DATE}-git-\${VCS_REF}
+export OPENSCAP_TAG=openscap-\${BUILD_DATE}-git-\${VCS_REF}
+EOF
+
+. ci/vars
+
+docker-compose build

@@ -1,6 +1,0 @@
-FROM jumanjiman/xrdp
-
-RUN dnf -y install \
-    scap-security-guide \
-    scap-workbench \
-    && dnf clean all
